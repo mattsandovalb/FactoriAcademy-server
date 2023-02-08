@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Courses;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -33,6 +34,12 @@ class UsersController extends Controller
             'email'=>'required',
         ]);
 
+        $users->name = $request->name;
+        $users->email = $request->email;
+
+        $users->save();
+
+        return $users;
 
     }
 
@@ -42,9 +49,10 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $users, $id)
     {
-        //
+        $users = User::find($id);
+        return $users;
     }
 
     /**
@@ -54,9 +62,16 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $users, $id)
     {
-        //
+        $users = User::find($id);
+
+        $users->name = $request->name;
+        $users->email = $request->email;
+
+        $users->update();
+
+        return $users;
     }
 
     /**
@@ -65,8 +80,16 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $users, $id)
     {
-        //
+        $users = Courses::find($id);
+
+        if(is_null($users)){
+            return response()->json('No se pudo realizar la peticion', 404);
+        }else{
+            return ('Succefull Deleted');
+        }
+        $users->delete();
+        return response()->noContent();
     }
 }

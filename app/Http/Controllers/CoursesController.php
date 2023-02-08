@@ -101,4 +101,5 @@ class CoursesController extends Controller
         $courses->delete();
         return response()->noContent();
     }
+
 }
