@@ -92,14 +92,14 @@ class CoursesController extends Controller
     public function destroy(Courses $courses, $id)
     {
         $courses = Courses::find($id);
-
-        if(is_null($courses)){
+    
+        if (is_null($courses)) {
             return response()->json('No se pudo realizar la peticion', 404);
-        }else{
-            return ('Succefull Deleted');
+        } else {
+            $courses->delete();
+            return response()->noContent();
+            return ('Successful Deleted');
         }
-        $courses->delete();
-        return response()->noContent();
+    }
     }
 
-}
