@@ -32,10 +32,12 @@ class UsersController extends Controller
         $request->validate([
             'name'=>'required',
             'email'=>'required',
+            'role' => 'required'
         ]);
 
         $users->name = $request->name;
         $users->email = $request->email;
+        $users->role = $request->role;
 
         $users->save();
 
@@ -68,6 +70,7 @@ class UsersController extends Controller
 
         $users->name = $request->name;
         $users->email = $request->email;
+        $users->role = $request->role;
 
         $users->update();
 
