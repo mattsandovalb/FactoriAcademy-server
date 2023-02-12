@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
-  
+    use HasFactory;
      /**
      * A role can belong to many users.
      *

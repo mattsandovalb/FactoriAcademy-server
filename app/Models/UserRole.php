@@ -5,36 +5,32 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Point extends Model
+class UserRole extends Model
 {
     use HasFactory;
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
-        'user_score',
+        'user_id',
+        'role_id',
     ];
 
     /**
-     * A point belongs to a user.
+     * Get the user that belongs to the user role.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
 
     /**
-     * A point belongs to a task.
+     * Get the role that belongs to the user role.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function task()
+    public function role()
     {
-        return $this->belongsTo(Task::class);
+        return $this->belongsTo(Role::class);
     }
-    
+}
 }
