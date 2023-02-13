@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/resources/Components/Hocs/Chat/',function(){
+    return view('login.php');
+});
