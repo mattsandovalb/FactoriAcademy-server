@@ -13,9 +13,7 @@ class Task extends Model
      *
      * @var array
      */
-    protected $fillable = [
-        'task_name', 'description', 'point',
-    ];
+    protected $guarded = [];
 
     /**
      * A task belongs to a quiz.

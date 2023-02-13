@@ -14,9 +14,8 @@ class Quiz extends Model
      *
      * @var array
      */
-    protected $fillable = [
-        'quiz_name', 'theme',
-    ];
+    protected $guarded = [];
+
 
     /**
      * A quiz belongs to a course.
