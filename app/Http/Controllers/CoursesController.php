@@ -68,20 +68,35 @@ class CoursesController extends Controller
      * @param  \App\Models\Courses  $courses
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Courses $courses, $id)
+   public function update(Request $request, $id)
     {
         $courses = Courses::find($id);
+ 
+        if (!$courses) {
+            return response()->json(['message' => 'No se encontró el curso solicitado'], 404);
+        }
 
-        $courses->title = $request ->title;
-        $courses->description = $request ->description;
-        $courses->tech = $request ->tech;
-        $courses->poster = $request ->poster;
-        $courses->level = $request ->level;
-
-        $courses->update();
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'tech' => 'required',
+            'poster' => 'required',
+            'level' => 'required'
+        ]);
+        $courses->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'tech' => $request->tech,
+            'poster' => $request->poster,
+            'level' => $request->level
+        ]);
 
         return $courses;
-    }
+    } 
+ 
+
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -102,4 +117,33 @@ class CoursesController extends Controller
         }
     }
     }
+/* 
+    public function store(Request $request)
+{
+    $courses = new Courses();
 
+    $request->validate([
+        'title' => 'required',
+        'description' => 'required',
+        'tech' => 'required',
+        'poster' => 'required',
+        'level' => 'required'
+    ]);
+ 
+    if ($request->hasFile('poster')) {
+        $file = $request->file('poster');
+        $filename = time() . '-' . $file->getClientOriginalName();
+        $destinationPath = public_path('images/poster');
+        $uploadSuccess = $file->move($destinationPath, $filename);
+        $courses->poster = '/images/poster/'.$filename;
+    }
+
+    $courses->title = $request->title;
+    $courses->description = $request->description;
+    $courses->tech = $request->tech;
+    $courses->level = $request->level;
+
+    $courses->save();
+
+    return $courses;
+} */
