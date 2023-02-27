@@ -85,7 +85,7 @@ class UsersController extends Controller
      */
     public function destroy(User $users, $id)
     {
-        $users = Courses::find($id);
+        $users = User::find($id);
 
         if(is_null($users)){
             return response()->json('No se pudo realizar la peticion', 404);
