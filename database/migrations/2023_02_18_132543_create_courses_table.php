@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('poster');
             $table->string('level');
 
-            $table->unsignedBigInteger('technologies_id');
+            $table->unsignedBigInteger('technologies_id')->nullable();
             $table->foreign('technologies_id')->references('id')->on('technologies')->onDelete('cascade');
             $table->timestamps();
         });

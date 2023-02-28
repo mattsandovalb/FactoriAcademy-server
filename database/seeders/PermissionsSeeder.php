@@ -1,12 +1,15 @@
 <?php
 
+
 namespace Database\Seeders;
+
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
+
 
 class PermissionsSeeder extends Seeder
 {
@@ -20,20 +23,28 @@ class PermissionsSeeder extends Seeder
         //
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
-        Permission::create(['name' => 'edit articles']);
-        Permission::create(['name' => 'delete articles']);
-        Permission::create(['name' => 'publish articles']);
-        Permission::create(['name' => 'unpublish articles']);
 
-        $role1 = Role::create(['name' => 'writer']);
-        $role1->givePermissionTo('edit articles');
-        $role1->givePermissionTo('delete articles');
+        Permission::create(['name' => 'create course']);
+        Permission::create(['name' => 'update course']);
+        Permission::create(['name' => 'delete course']);
+        // Permission::create(['name' => 'unpublish articles']);
+
+
+        $role1 = Role::create(['name' => 'user']);
+       
+
 
         $role2 = Role::create(['name' => 'admin']);
-        $role2->givePermissionTo('publish articles');
-        $role2->givePermissionTo('unpublish articles');
+        $role2->givePermissionTo('create course');
+        $role2->givePermissionTo('update course');
+        $role2->givePermissionTo('delete course');
+
 
         $role3 = Role::create(['name' => 'Super-Admin']);
+        $role3->givePermissionTo('create course');
+        $role3->givePermissionTo('update course');
+        $role3->givePermissionTo('delete course');
+
 
         $user = \App\Models\User::factory()->create([
             'name' => 'Example User',
@@ -41,11 +52,13 @@ class PermissionsSeeder extends Seeder
         ]);
         $user->assignRole($role1);
 
+
         $user = \App\Models\User::factory()->create([
             'name' => 'Example Admin User',
             'email' => 'admin@example.com',
         ]);
         $user->assignRole($role2);
+
 
         $user = \App\Models\User::factory()->create([
             'name' => 'Example Super-Admin User',
