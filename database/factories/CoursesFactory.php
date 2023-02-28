@@ -17,7 +17,6 @@ class CoursesFactory extends Factory
     public function definition()
     {
         return [
-
                 'title' => fake()->title(20),
                 'description' => fake()->text(200),
                 'tech' => fake()->text(10),

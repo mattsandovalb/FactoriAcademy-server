@@ -8,6 +8,15 @@ use Illuminate\Http\Request;
 
 class ExercicesController extends Controller
 {
+
+    public function __construct()
+    {  
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+
+
+        $this->middleware(['permissions:
+        '])->only('create', 'update','delete');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +24,7 @@ class ExercicesController extends Controller
      */
     public function index()
     {
-        // return exercices::all();
+        return exercices::all();
     }
 
     /**
@@ -26,32 +35,32 @@ class ExercicesController extends Controller
      */
     public function store(Request $request)
     {
-        // $exercices = new exercices();
+        $exercices = new exercices();
 
-        // $request->validate([
-        //     'title' => 'required',
-        //     'statment' => 'required',
-        //     'instruction' => 'required',
-        //     'documentation1' => 'required',
-        //     'documentation2' => 'required',
-        //     'solution' => 'required',
-        //     'value' => 'required',
+        $request->validate([
+            'title' => 'required',
+            'statment' => 'required',
+            'instruction' => 'required',
+            'documentation1' => 'required',
+            'documentation2' => 'required',
+            'solution' => 'required',
+            'value' => 'required',
            
 
-        // ]);
+        ]);
 
-        // $exercices->title = $request -> title;
-        // $exercices-> statment = $request ->  statment;
-        // $exercices-> instruction = $request -> instruction;
-        // $exercices->documentation1 = $request -> documentation1;
-        // $exercices->documentation2 = $request -> documentation2;
-        // $exercices->solution = $request -> solution;
-        // $exercices->value = $request -> value;
+        $exercices->title = $request -> title;
+        $exercices-> statment = $request ->  statment;
+        $exercices-> instruction = $request -> instruction;
+        $exercices->documentation1 = $request -> documentation1;
+        $exercices->documentation2 = $request -> documentation2;
+        $exercices->solution = $request -> solution;
+        $exercices->value = $request -> value;
        
 
-        // $exercices->save();
+        $exercices->save();
 
-        // return $exercices;
+        return $exercices;
         
     }
 
@@ -63,8 +72,8 @@ class ExercicesController extends Controller
      */
     public function show(exercices $exercices, $id)
     {
-        // $exercices = exercices::find($id);
-        // return $exercices;
+        $exercices = exercices::find($id);
+        return $exercices;
     }
 
     /**
@@ -76,20 +85,20 @@ class ExercicesController extends Controller
      */
     public function update(Request $request, exercices $exercices, $id)
     {
-        // $exercices = exercices::find($id);
+        $exercices = exercices::find($id);
 
-        // $exercices->title = $request -> title;
-        // $exercices-> statment = $request ->  statment;
-        // $exercices-> instruction = $request -> instruction;
-        // $exercices->documentation1 = $request -> documentation1;
-        // $exercices->documentation2 = $request -> documentation2;
-        // $exercices->solution = $request -> solution;
-        // $exercices->value = $request -> value;
+        $exercices->title = $request -> title;
+        $exercices-> statment = $request ->  statment;
+        $exercices-> instruction = $request -> instruction;
+        $exercices->documentation1 = $request -> documentation1;
+        $exercices->documentation2 = $request -> documentation2;
+        $exercices->solution = $request -> solution;
+        $exercices->value = $request -> value;
         
 
-        // $exercices->update();
+        $exercices->update();
 
-        // return $exercices;
+        return $exercices;
     }
 
     /**
@@ -100,15 +109,14 @@ class ExercicesController extends Controller
      */
     public function destroy(exercices $exercices, $id)
     {
-     
-        // $exercices = exercices::find($id);
+        $exercices = exercices::find($id);
 
-        // if (is_null($exercices)) {
-        //     return response()->json('No se pudo realizar la peticion', 404);
-        // } else {
-        //     $exercices->delete();
-        //     return response()->noContent();
-        //     return ('Successful Deleted');
-        // }
+        if (is_null($exercices)) {
+            return response()->json('No se pudo realizar la peticion', 404);
+        } else {
+            $exercices->delete();
+            return response()->noContent();
+            return ('Successful Deleted');
+        }
     }
 }
