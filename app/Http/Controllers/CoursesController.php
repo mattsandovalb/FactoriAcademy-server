@@ -24,7 +24,12 @@ class CoursesController extends Controller
      */
     public function index()
     {
-        return Courses::all();
+        $courses = Courses::all();
+
+        return response()->json([
+            'status' => true,
+            'course' => $courses,
+        ]);
     }
 
     /**
@@ -53,7 +58,11 @@ class CoursesController extends Controller
 
         $courses->save();
 
-        return $courses;
+        return response()->json([
+            'status' => true,
+            'message' => "Course Created successfully!",
+            'courses' => $courses
+        ], 200);
 
     }
 
