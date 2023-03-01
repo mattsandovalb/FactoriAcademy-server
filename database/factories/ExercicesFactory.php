@@ -17,7 +17,14 @@ class ExercicesFactory extends Factory
     public function definition()
     {
         return [
-            //
-        ];
+            'title' => fake()->title(20),
+            'statment' => fake()->text(200),
+            'instruction' => fake()->text(10),
+            'documentation1' => fake()->url(),
+            'documentation2' => fake()->url(),
+            'solution' => fake()->text(6),
+            'value' => fake()->boolean(1),
+            'course_id' => fake()->numerify(1),
+    ];
     }
 }
