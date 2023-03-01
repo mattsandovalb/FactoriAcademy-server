@@ -8,6 +8,16 @@ use Illuminate\Http\Request;
 
 class CoursesController extends Controller
 {
+
+
+    public function __construct()
+    {  
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+
+
+        $this->middleware(['permissions:
+        '])->only('create', 'update','delete');
+    }
     /**
      * Display a listing of the resource.
      *
