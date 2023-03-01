@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
@@ -57,6 +58,7 @@ class DatabaseSeeder extends Seeder
             $user = \App\Models\User::factory()->create([
                 'name' => 'Example Admin User',
                 'email' => 'admin@example.com',
+                'password' => Hash::make('hola'),
             ]);
             $user->assignRole($role2);
     
