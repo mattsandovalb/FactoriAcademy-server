@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -32,12 +37,12 @@ class UsersController extends Controller
         $request->validate([
             'name'=>'required',
             'email'=>'required',
-            'role' => 'required'
+            
         ]);
 
         $users->name = $request->name;
         $users->email = $request->email;
-        $users->role = $request->role;
+        
 
         $users->save();
 
@@ -70,7 +75,7 @@ class UsersController extends Controller
 
         $users->name = $request->name;
         $users->email = $request->email;
-        $users->role = $request->role;
+       
 
         $users->update();
 

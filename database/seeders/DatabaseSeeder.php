@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             \App\Models\Courses::factory(3)->create();
             \App\Models\Exercices::factory(5)->create();
 
-            \App\Models\User::factory(30)->create();
+            \App\Models\User::factory(3)->create();
 
             app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
@@ -58,7 +58,7 @@ class DatabaseSeeder extends Seeder
             $user = \App\Models\User::factory()->create([
                 'name' => 'Example Admin User',
                 'email' => 'admin@example.com',
-                'password' => Hash::make('hola'),
+                'password' => Hash::make('factoria'),
             ]);
             $user->assignRole($role2);
     

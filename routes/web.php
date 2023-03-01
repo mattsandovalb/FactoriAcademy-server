@@ -16,6 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/', function () {
+    return view('login');
+})->name('login');
+
+
+
 // Route::get('images/poster/{filename}', function ($filename)
 // {
 //     $path = public_path('images/' . $filename);

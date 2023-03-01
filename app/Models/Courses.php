@@ -9,7 +9,8 @@ class Courses extends Model
 {
     use HasFactory;
 
-
+    protected $guarded = []; 
+    
     public function exercices()
 {
     return $this->belongsTo('App\Models\Technologies');
