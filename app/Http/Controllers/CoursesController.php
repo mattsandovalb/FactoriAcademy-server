@@ -45,7 +45,7 @@ class CoursesController extends Controller
             'description' => 'required',
             'tech' => 'required',
             'poster' => 'required',
-            'level' => 'required'
+            'level' => 'required',
         ]);
 
         $courses->title = $request ->title;
@@ -53,6 +53,7 @@ class CoursesController extends Controller
         $courses->tech = $request ->tech;
         $courses->poster = $request ->poster;
         $courses->level = $request ->level;
+
 
         $courses->save();
 
@@ -96,14 +97,14 @@ class CoursesController extends Controller
             'description' => 'required',
             'tech' => 'required',
             'poster' => 'required',
-            'level' => 'required'
+            'level' => 'required',
         ]);
         $courses->update([
             'title' => $request->title,
             'description' => $request->description,
             'tech' => $request->tech,
             'poster' => $request->poster,
-            'level' => $request->level
+            'level' => $request->level,
         ]);
 
         return $courses;

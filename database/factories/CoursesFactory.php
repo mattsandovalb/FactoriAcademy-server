@@ -23,6 +23,7 @@ class CoursesFactory extends Factory
                 'tech' => fake()->text(10),
                 'poster' => fake()->url(),
                 'level' => fake()->text(6),
+                
 
         ];
     }

@@ -20,6 +20,7 @@ class CoursesSeeder extends Seeder
             'tech' => 'HTML',
             'poster' => 'https://play-lh.googleusercontent.com/RslBy1o2NEBYUdRjQtUqLbN-ZM2hpks1mHPMiHMrpAuLqxeBPcFSAjo65nQHbTA53YYn',
             'level' => 'Begginer', 
+         
         ]);
 
         Courses::factory()->create([
@@ -27,6 +28,7 @@ class CoursesSeeder extends Seeder
             'tech' => 'CSS',
             'poster' => 'https://play-lh.googleusercontent.com/RTAZb9E639F4JBcuBRTPEk9_92I-kaKgBMw4LFxTGhdCQeqWukXh74rTngbQpBVGxqo',
             'level' => 'Begginer',
+      
         ]);
     }
 }
