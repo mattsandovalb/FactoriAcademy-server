@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Courses;
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -14,6 +15,18 @@ class UsersController extends Controller
     {
         $this->middleware('auth:api');
     }
+
+
+    public function me()
+    {
+        return response()->json([
+            'status' => true,
+            'user' => [
+                'user' => new UserResource(auth()->user()),
+            ]
+        ]);
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +34,12 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return User::all();
+        $users =  User::all();
+
+        return response()->json([
+            'status' => true,
+            'users' => $users
+        ]);
     }
 
     /**
@@ -46,7 +64,11 @@ class UsersController extends Controller
 
         $users->save();
 
-        return $users;
+        return response()->json([
+            'status' => true,
+            'messages' => 'User Created Successfully',
+            'users' => $users
+        ], 200);
 
     }
 
