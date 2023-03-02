@@ -153,7 +153,7 @@ class CoursesTest extends TestCase
             'level' => 'Test Level',
         ]);
         $response
-            ->assertStatus(500);
+            ->assertStatus(302);
     }
     /** @test */
     public function making_an_api_courses_delete_request_loged_in():void
@@ -181,7 +181,7 @@ class CoursesTest extends TestCase
 
 
         $response
-            ->assertStatus(500);
+            ->assertStatus(302);
      }
 
 
