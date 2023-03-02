@@ -73,7 +73,6 @@ class CoursesController extends Controller
     public function show(Courses $courses, $id)
     {
         $courses = Courses::find($id);
-
         return $courses;
     }
 

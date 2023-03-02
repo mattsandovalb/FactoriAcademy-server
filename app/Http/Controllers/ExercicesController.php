@@ -20,7 +20,12 @@ class ExercicesController extends Controller
      */
     public function index()
     {
-        return Exercices::all();
+        $exercices = Exercices::all();
+
+        return response()->json([
+            'status' => true,
+            'exercices' => $exercices
+        ]);
     }
 
     /**
@@ -56,7 +61,11 @@ class ExercicesController extends Controller
 
         $exercices->save();
 
-        return $exercices;
+        return response()->json([
+            'status' => true,
+            'message' => "Exercice Created successfully!",
+            'exercces' => $exercices
+        ], 200);
         
     }
 
@@ -83,16 +92,27 @@ class ExercicesController extends Controller
     {
         $exercices = Exercices::find($id);
 
-        $exercices->title = $request -> title;
-        $exercices-> statment = $request ->  statment;
-        $exercices-> instruction = $request -> instruction;
-        $exercices->documentation1 = $request -> documentation1;
-        $exercices->documentation2 = $request -> documentation2;
-        $exercices->solution = $request -> solution;
-        $exercices->value = $request -> value;
-        
+        if (!$exercices) {
+            return response()->json(['message' => 'No se encontró el Ejercicio solicitado'], 404);
+        }
 
-        $exercices->update();
+        $request->validate([
+            'title' => 'required',
+            'statment' => 'required',
+            'instruction' => 'required',
+            'documentation1' => 'required',
+            'documentation2' => 'required',
+            'solution' => 'required',
+            'value' => 'required'
+        ]);
+        $exercices->update([
+            'title' => $request->title,
+            'statment' => $request->statment,
+            'documentation1' => $request->documentation1,
+            'documentation2' => $request->documentation2,
+            'solution' => $request->solution,
+            'value' => $request->value,
+        ]);
 
         return $exercices;
     }
