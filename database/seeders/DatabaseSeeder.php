@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             CoursesSeeder::class,
             PermissionsSeeder::class,
             TechnologiesSeeder::class,
+            ExercicesSeeder::class,
         ]);
 
 
