@@ -51,8 +51,8 @@ class ExercicesController extends Controller
         ]);
 
         $exercices->title = $request -> title;
-        $exercices-> statment = $request ->  statment;
-        $exercices-> instruction = $request -> instruction;
+        $exercices->statment = $request ->  statment;
+        $exercices->instruction = $request -> instruction;
         $exercices->documentation1 = $request -> documentation1;
         $exercices->documentation2 = $request -> documentation2;
         $exercices->solution = $request -> solution;
@@ -108,6 +108,7 @@ class ExercicesController extends Controller
         $exercices->update([
             'title' => $request->title,
             'statment' => $request->statment,
+            'instruction' => $request->instruction,
             'documentation1' => $request->documentation1,
             'documentation2' => $request->documentation2,
             'solution' => $request->solution,

@@ -108,11 +108,6 @@ class CoursesController extends Controller
 
         return $courses;
     } 
- 
-
-
-
-
     /**
      * Remove the specified resource from storage.
      *

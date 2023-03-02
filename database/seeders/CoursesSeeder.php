@@ -19,14 +19,14 @@ class CoursesSeeder extends Seeder
             'title' => 'Introducción a HTML',
             'tech' => 'HTML',
             'poster' => 'https://play-lh.googleusercontent.com/RslBy1o2NEBYUdRjQtUqLbN-ZM2hpks1mHPMiHMrpAuLqxeBPcFSAjo65nQHbTA53YYn',
-            'level' => 'Begginer'
+            'level' => 'Begginer', 
         ]);
 
         Courses::factory()->create([
             'title' => 'Introducción a CSS',
             'tech' => 'CSS',
             'poster' => 'https://play-lh.googleusercontent.com/RTAZb9E639F4JBcuBRTPEk9_92I-kaKgBMw4LFxTGhdCQeqWukXh74rTngbQpBVGxqo',
-            'level' => 'Begginer'
+            'level' => 'Begginer',
         ]);
     }
 }

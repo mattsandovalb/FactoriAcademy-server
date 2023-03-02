@@ -30,27 +30,20 @@ class CoursesTest extends TestCase
 
 
         $response
-        ->assertStatus(200)
-        ->assertJson([
-            'status' => true,
-        ]);
+            ->assertStatus(200)
+            ->assertJson([
+                'status' => true,
+            ]);
     }
 
-
-
-
-
-
-
-
     /** @test */
-    public function making_api_courses_store_request_loged() :void
+    public function making_api_courses_store_request_loged(): void
     {
         $response = $this->postJson('/api/login', [
             'email' => "admin@example.com",
             'password' => 'factoria',
         ]);
-       
+
         $this->assertAuthenticatedAs(Auth::user());
 
 
@@ -102,6 +95,7 @@ class CoursesTest extends TestCase
         $response
             ->assertStatus(401);
     }
+
     /** @test */
     public function making_an_api_courses_update_request_loged_in(): void
     {
@@ -109,8 +103,8 @@ class CoursesTest extends TestCase
             'email' => "admin@example.com",
             'password' => 'factoria',
         ]);
-       
-       
+
+
         $this->assertAuthenticatedAs(Auth::user());
 
 
@@ -133,6 +127,7 @@ class CoursesTest extends TestCase
         $response
             ->assertStatus(200);
     }
+
     /** @test */
     public function making_an_api_courses_update_request_not_loged_in(): void
     {
@@ -143,8 +138,6 @@ class CoursesTest extends TestCase
             'poster' => 'Test Poster',
             'level' => 'Test Level',
         ]);
-
-
         $this->assertDatabaseMissing('courses', [
             'title' => 'Test Title',
             'description' => 'Test Description',
@@ -155,36 +148,30 @@ class CoursesTest extends TestCase
         $response
             ->assertStatus(302);
     }
+
     /** @test */
-    public function making_an_api_courses_delete_request_loged_in():void
+    public function making_an_api_courses_delete_request_loged_in(): void
     {
         $response = $this->postJson('/api/login', [
             'email' => "admin@example.com",
             'password' => 'factoria',
         ]);
-       
-       
+
+
         $this->assertAuthenticatedAs(Auth::user());
 
 
-        $response = $this->delete('/api/courses/1',[]);
-
-
-        $response -> assertStatus(204);
-    }
-
-
-     /** @test */
-     public function making_an_api_courses_delete_request_not_loged():void
-     {
         $response = $this->delete('/api/courses/1', []);
 
 
+        $response->assertStatus(204);
+    }
+
+    /** @test */
+    public function making_an_api_courses_delete_request_not_loged(): void
+    {
+        $response = $this->delete('/api/courses/1', []);
         $response
             ->assertStatus(302);
-     }
-
-
-
-
+    }
 }
