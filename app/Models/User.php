@@ -16,6 +16,8 @@ class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable, HasFactory, HasRoles;
 
+    protected $guarded = []; 
+
     /**
      * The attributes that are mass assignable.
      *
@@ -66,9 +68,9 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-    public function advertisements()
-    {
-        return $this->hasMany(Courses::class);
-    }
+    // public function courses()
+    // {
+    //     return $this->hasMany(Courses::class);
+    // }
 
 }

@@ -14,8 +14,6 @@ class CoursesController extends Controller
     {  
         $this->middleware('auth:api', ['except' => ['index', 'show']]);
 
-
-        
     }
     /**
      * Display a listing of the resource.

@@ -9,6 +9,8 @@ class Exercices extends Model
 {
     use HasFactory;
 
+    protected $guarded = []; 
+    
     public function course()
     {
         return $this->belongsToMany('App\Models\Courses');
