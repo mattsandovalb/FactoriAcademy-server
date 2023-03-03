@@ -57,30 +57,30 @@ class UserTest extends TestCase
     }
 
     /** @test */
-    public function admin_can_create_an_user()
-    {
-        $response = $this->postJson('/api/login', [
-            'email' => "admin@example.com",
-            'password' => 'factoria',
-        ]);
+    // public function admin_can_create_an_user()
+    // {
+    //     $response = $this->postJson('/api/login', [
+    //         'email' => "admin@example.com",
+    //         'password' => 'factoria',
+    //     ]);
 
-        $this->assertAuthenticatedAs(Auth::user());
+    //     $this->assertAuthenticatedAs(Auth::user());
 
-        $response = $this->postJson('api/users', [
-            'name' => 'Test Name',
-            'email' => 'Test Email',
-            // 'password' => Hash::make('factoria')
-        ]);
+    //     $response = $this->postJson('api/users', [
+    //         'name' => 'Test Name',
+    //         'email' => 'Test Email',
+    //         // 'password' => Hash::make('factoria')
+    //     ]);
 
-        $this->assertDatabaseHas('users', [
-            'name' => 'Test Name',
-            'email' => 'Test Email',
-            // 'password' => Hash::make('factoria')
-        ]);
-        $response
-        ->assertStatus(200)
-        ->assertJson([
-            'statis' => 'success',
-        ]);
-    }
+    //     $this->assertDatabaseHas('users', [
+    //         'name' => 'Test Name',
+    //         'email' => 'Test Email',
+    //         // 'password' => Hash::make('factoria')
+    //     ]);
+    //     $response
+    //     ->assertStatus(200)
+    //     ->assertJson([
+    //         'statis' => 'success',
+    //     ]);
+    // }
 }

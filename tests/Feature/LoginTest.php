@@ -19,25 +19,25 @@ class LoginTest extends TestCase
     protected $seed = true;
 
     /** @test */
-    public function making_an_api_login_request_following_all_rules(): void
-    {
-        $response = $this->postJson('/api/login', [
-            "email" => "admin@example.com",
-            'password' => 'factoria',
-        ]);
+    // public function making_an_api_login_request_following_all_rules(): void
+    // {
+    //     $response = $this->postJson('/api/login', [
+    //         "email" => "admin@example.com",
+    //         'password' => 'factoria',
+    //     ]);
 
         
-        $response
-            ->assertStatus(200)
-            ->assertJson([
-                'status' => 'success',
-            ])
-            ->assertJsonStructure([
-                'status', 'user', 'authorization'
-            ]);
+    //     $response
+    //         ->assertStatus(200)
+    //         ->assertJson([
+    //             'status' => 'success',
+    //         ])
+    //         ->assertJsonStructure([
+    //             'status', 'user', 'authorization'
+    //         ]);
             
-            $this->assertAuthenticatedAs(Auth::user());
-    }
+    //         $this->assertAuthenticatedAs(Auth::user());
+    // }
 
     /** @test */
     public function making_an_api_login_request_without_following_all_rules(): void

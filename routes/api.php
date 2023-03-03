@@ -17,10 +17,6 @@ Route::controller(AuthController::class)->group(function () {
 
 
 
-
-
-
-
 Route::apiResource('courses', CoursesController::class);
 Route::apiResource('users', UsersController::class);
 Route::apiResource('exercices', ExercicesController::class);
