@@ -38,7 +38,9 @@ class AuthController extends Controller
                     'token' => $token,
                     'type' => 'bearer',
                 ]
-            ]);
+
+            ])->withCookie(cookie('token', $token, 60 * 14))
+            ->withCookie(cookie('logged_in', true, 60 * 14, null, null, false, false));
 
     }
 

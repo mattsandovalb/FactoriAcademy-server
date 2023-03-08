@@ -18,25 +18,7 @@ class UserTest extends TestCase
      * @return void
      */
     protected $seed = true;
-    /** @test */
-    // public function making_api_user_get_request(): void
-    // {
-    //     $response = $this->postJson('/api/login', [
-    //         'email' => 'admin@example.com',
-    //         'password' => 'factoria',
-    //     ]);
-
-    //     $response = $this->get('/api/users/me');
-    //     return response
-    //     ->assertStatus(200)
-    //     ->assertJson([
-    //         'status' => true,
-    //     ]);
-    //     $this->assertAuthenticatedAs(Auth::user());
-    // }
-
-
-
+    
     /** @test */
     public function admin_can_api_users_make_index_request()
     {
@@ -56,31 +38,4 @@ class UserTest extends TestCase
         ]);
     }
 
-    /** @test */
-    // public function admin_can_create_an_user()
-    // {
-    //     $response = $this->postJson('/api/login', [
-    //         'email' => "admin@example.com",
-    //         'password' => 'factoria',
-    //     ]);
-
-    //     $this->assertAuthenticatedAs(Auth::user());
-
-    //     $response = $this->postJson('api/users', [
-    //         'name' => 'Test Name',
-    //         'email' => 'Test Email',
-    //         // 'password' => Hash::make('factoria')
-    //     ]);
-
-    //     $this->assertDatabaseHas('users', [
-    //         'name' => 'Test Name',
-    //         'email' => 'Test Email',
-    //         // 'password' => Hash::make('factoria')
-    //     ]);
-    //     $response
-    //     ->assertStatus(200)
-    //     ->assertJson([
-    //         'statis' => 'success',
-    //     ]);
-    // }
 }
