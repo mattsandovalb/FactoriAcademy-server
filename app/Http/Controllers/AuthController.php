@@ -40,6 +40,7 @@ class AuthController extends Controller
                 ]
             ])->withCookie(cookie('token', $token, 60 * 14));
 
+
     }
 
     public function register(Request $request){
