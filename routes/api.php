@@ -17,6 +17,8 @@ Route::controller(AuthController::class)->group(function () {
 
 
 
+
 Route::apiResource('courses', CoursesController::class);
+Route::get('users/me', [UsersController::class, 'me']);
 Route::apiResource('users', UsersController::class);
 Route::apiResource('exercices', ExercicesController::class);

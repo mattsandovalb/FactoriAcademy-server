@@ -21,9 +21,8 @@ class UsersController extends Controller
     {
         return response()->json([
             'status' => true,
-            'user' => [
-                'user' => new UserResource(auth()->user()),
-            ]
+            'user' => new UserResource(auth()->user()),
+            
         ]);
     }
     
