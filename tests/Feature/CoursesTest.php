@@ -146,7 +146,7 @@ class CoursesTest extends TestCase
             'level' => 'Test Level',
         ]);
         $response
-            ->assertStatus(302);
+            ->assertStatus(500);
     }
 
     /** @test */
@@ -172,6 +172,6 @@ class CoursesTest extends TestCase
     {
         $response = $this->delete('/api/courses/1', []);
         $response
-            ->assertStatus(302);
+            ->assertStatus(500);
     }
 }

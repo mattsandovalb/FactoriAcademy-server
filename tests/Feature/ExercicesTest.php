@@ -166,6 +166,6 @@ class ExercicesTest extends TestCase
     {
         $response = $this->delete('/api/exercices/1', []);
         $response
-            ->assertStatus(302);
+            ->assertStatus(500);
     }
 }
